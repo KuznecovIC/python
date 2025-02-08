@@ -1,8 +1,12 @@
+from typing import List, Optional
+from PIL import Image
+import os
 import json
 from dataclasses import dataclass
-from typing import List, Dict
-from typing import Optional 
+from typing import Dict
 
+
+# Модели и логика игры с городами
 @dataclass
 class City:
     name: str
@@ -13,10 +17,12 @@ class City:
     longitude: float
     is_used: bool = False
 
+
 # Функция для загрузки данных из JSON файла
 def load_cities_from_file(filename: str) -> List[Dict]:
     with open(filename, 'r', encoding='utf-8') as file:
         return json.load(file)
+
 
 class CitiesSerializer:
     def __init__(self, city_data: List[Dict]):
@@ -46,6 +52,7 @@ class CitiesSerializer:
         if letter.lower() in soft_hard_letters:
             return letter.lower()
         return letter.lower()
+
 
 class CityGame:
     def __init__(self, cities_serializer: CitiesSerializer):
@@ -128,7 +135,53 @@ class CityGame:
         return pc_city
 
 
-# Загружаем данные из файла
+# Класс для сжатия изображений
+
+class ImageCompressor:
+    supported_formats = ['.jpeg', '.jpg', '.png']  # Атрибут класса
+
+    def __init__(self, quality: int):
+        self.__quality = quality  # Приватный атрибут
+
+    @property
+    def quality(self) -> int:
+        return self.__quality
+
+    @quality.setter
+    def quality(self, value: int) -> None:
+        if 0 <= value <= 100:
+            self.__quality = value
+        else:
+            raise ValueError("Quality must be between 0 and 100")
+
+    def compress_image(self, input_path: str, output_path: str) -> None:
+        """
+        Сжимает изображение, используя указанный путь и качество.
+        """
+        with Image.open(input_path) as img:
+            img.save(output_path, quality=self.quality)
+
+    @classmethod
+    def process_directory(cls, directory: str, quality: int) -> None:
+        """
+        Обрабатывает все изображения в указанной директории.
+        """
+        if not os.path.isdir(directory):
+            print(f"Ошибка: Директория {directory} не найдена.")
+            return
+
+        compressor = cls(quality)
+        for filename in os.listdir(directory):
+            if any(filename.lower().endswith(ext) for ext in cls.supported_formats):
+                input_path = os.path.join(directory, filename)
+                output_path = os.path.join(directory, f"compressed_{filename}")
+                compressor.compress_image(input_path, output_path)
+                print(f"Изображение {filename} сжато и сохранено как {output_path}")
+
+
+# Пример использования
+
+# Загрузка данных для игры
 city_data = load_cities_from_file("cities.json")
 
 # Создаем сериализатор городов
@@ -139,3 +192,4 @@ game = CityGame(cities_serializer)
 
 # Начинаем игру
 game.start_game()
+
