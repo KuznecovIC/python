@@ -1,3 +1,5 @@
+import os
+print(os.getcwd())  
 class TxtFileHandler:
     """
     Класс для работы с текстовыми файлами.
@@ -68,3 +70,35 @@ handler.append_file("my_file.txt", "This is another string.\n")
 # Чтение из файла
 content = handler.read_file("my_file.txt")
 print(content)
+# Вывод:
+
+class TxtFileHandler():
+    """
+    Класс для работы с текстовыми файлами.
+    Может читать, писать и добавлять даннные в TXT файлы.
+    """
+    @staticmethod
+    def read_file(filepath: str, encoding: str = "utf-8") -> str:
+        with open(filepath, 'r') as file:
+            data: str = file.read()
+
+        return data
+    @staticmethod
+    def write_file(filepath: str, *data: str, encoding: str = "utf-8") -> None:
+        with open(filepath, 'w') as file:
+            for line in data:
+                file.write(line + "\n")
+        return data
+    @staticmethod
+    def append_file(filepath: str, *data: str, encoding: str = "utf-8") -> None:
+        with open(filepath, 'a') as file:
+            for line in data:
+                file.write(line + "\n")
+        return data
+file_path = "lessom_16.txt"
+txt_handler = TxtFileHandler()
+
+txt_handler.write_file(file_path, "Привет", "Мир")
+
+
+

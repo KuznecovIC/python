@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Москва",
+        "population": 12506468,
+        "subject": "Москва",
+        "district": "Центральный",
+        "latitude": 55.7558,
+        "longitude": 37.6176
+    },
+    {
+        "name": "Санкт-Петербург",
+        "population": 5384342,
+        "subject": "Санкт-Петербург",
+        "district": "Северо-Запад",
+        "latitude": 59.9343,
+        "longitude": 30.3351
+    }
+]
