@@ -1,0 +1,77 @@
+@startuml
+ 
+scale 500 width
+skinparam BackgroundColor f0faf5
+skinparam TitleFontColor  0b2e1d
+ 
+'Настройки для стрелок
+skinparam ArrowColor 294f3d
+skinparam ArrowThickness 1
+skinparam ArrowFontColor 294f3d
+skinparam ArrowFontName Monospace
+ 
+title "Паттерн Строитель (Builder)"
+ 
+class Director #e3c764 {
+    + construct()
+}
+ 
+abstract class Builder #b5beeb {
+    + reset()
+    + buildStepA()
+    + buildStepB()
+    + buildStepC()
+}
+ 
+class ConcreteBuilder1 #4dd191 {
+    - result: Product1
+    + reset()
+    + buildStepA()
+    + buildStepB()
+    + buildStepC()
+    + getResult(): Product1
+}
+ 
+class ConcreteBuilder2 #4dd191 {
+    - result: Product2
+    + reset()
+    + buildStepA()
+    + buildStepB()
+    + buildStepC()
+    + getResult(): Product2
+}
+ 
+class Product1 #98FB98 {
+    - parts: list
+}
+ 
+class Product2 #98FB98 {
+    - parts: list
+}
+ 
+note right of Director
+    Определяет порядок вызова
+    строительных шагов для
+    создания продукта
+end note
+ 
+note right of Builder
+    Объявляет все возможные
+    этапы и шаги конструирования
+end note
+ 
+Director o--> Builder
+Builder <|-- ConcreteBuilder1
+Builder <|-- ConcreteBuilder2
+ConcreteBuilder1 ..> Product1
+ConcreteBuilder2 ..> Product2
+ 
+legend
+|= Цв. |= Тип класса |
+|<back:#e3c764>         | Директор |
+|<back:#b5beeb>         | Абстрактный строитель |
+|<back:#4dd191>         | Конкретные строители |
+|<back:#98FB98>         | Продукты |
+endlegend
+ 
+@enduml

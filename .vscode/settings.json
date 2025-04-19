@@ -1,0 +1,35 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "marvel_nm",
+            "database": "${workspaceFolder:python}/data/marvel_not_normal 1.db"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "marvel_nn",
+            "database": "${workspaceFolder:python}/data/marvel_normal.db"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "students",
+            "database": "${workspaceFolder:python}/data/students.db"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "barbershop",
+            "database": "${workspaceFolder:python}/data/barbershop.db"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "students_proffesion",
+            "database": "${workspaceFolder:python}/data/students.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

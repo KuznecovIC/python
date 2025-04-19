@@ -1,2 +1,2 @@
-https://github.com/KuznecovIC/python411
-08 02 2025 дз
+https://github.com/KuznecovIC/python/blob/master/hw/barbershop.sql 1 файл
+https://github.com/KuznecovIC/python/blob/master/data/barbershop.db дата фаил с таблицами

@@ -1,0 +1,1 @@
+MISTRAL_API_KEY = 'WPBZaq7lrqbzjOPXFL2f8BFWLprRkhAx'

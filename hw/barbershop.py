@@ -7,7 +7,6 @@ DB_PATH = r"C:\Users\omegasigmakladdmen\Downloads\python\data\barbershop.db"
 SQL_PATH = r"C:\Users\omegasigmakladdmen\Downloads\python\hw\barbershop.sql"
 
 def ensure_database():
-    """Гарантированно создает новую базу данных с правильной структурой"""
     # Удаляем старую базу, если существует
     max_attempts = 3
     for attempt in range(max_attempts):

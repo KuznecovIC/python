@@ -1,0 +1,205 @@
+--SELECT EYE
+--FROM MarvelCharacters
+--GROUP BY EYE;
+
+--SELECT EYE, COUNT(*) AS COUNT
+--FROM MarvelCharacters
+--GROUP BY EYE;
+
+--SELECT EYE, COUNT(*) AS COUNT
+--FROM MarvelCharacters
+--WHERE EYE IS NOT NULL
+--GROUP BY EYE
+--HAVING Count > 10 AND EYE IS NOT NULL;
+
+--SELECT EYE, COUNT(*) AS Count
+--FROM MarvelCharacters
+--WHERE EYE IS NOT NULL
+--GROUP BY EYE
+--HAVING Count > 10 
+--ORDER BY Count DESC
+--LIMIT 5;
+
+--SELECT HAIR, COUNT(*) AS Count
+--FROM MarvelCharacters
+--WHERE HAIR IS NOT NULL
+--GROUP BY HAIR
+--HAVING Count > 10 
+--ORDER BY Count DESC
+--LIMIT 5;
+
+--SELECT HAIR, EYE, COUNT(*) AS Count, ROUND(AVG(YEAR)) AS AvgYear
+--FROM MarvelCharacters
+--WHERE HAIR IS NOT NULL AND EYE IS NOT NULL
+--GROUP BY HAIR, EYE
+--HAVING Count > 10 
+--ORDER BY Count DESC
+
+--SELECT HAIR, COUNT(*) AS Count, Name AS MostPopularCharacter, APPEARANCES
+--FROM 
+--   (SELECT * FROM MarvelCharacters
+--    ORDER BY APPEARANCES DESC)
+--WHERE HAIR IS NOT NULL
+--GROUP BY HAIR
+--HAVING Count > 10 
+--ORDER BY Count DESC
+--LIMIT 5;
+
+--SELECT HAIR, EYE, COUNT(*) AS Count, Name, YEAR
+--FROM 
+--    (SELECT * FROM MarvelCharacters
+--    ORDER BY YEAR)
+--WHERE HAIR IS NOT NULL AND EYE IS NOT NULL
+--GROUP BY HAIR, EYE
+--HAVING Count > 10
+--ORDER BY YEAR
+
+
+--WITH MarvelCharactersSorted AS 
+--    (SELECT * FROM MarvelCharacters
+--    WHERE YEAR IS NOT NULL
+--    ORDER BY YEAR)
+
+--SELECT HAIR, EYE, COUNT(*) AS Count, Name, YEAR
+--FROM MarvelCharactersSorted
+--WHERE HAIR IS NOT NULL AND EYE IS NOT NULL
+--GROUP BY HAIR, EYE
+--HAVING Count > 10
+--ORDER BY HAIR, YEAR
+
+--SELECT SEX, COUNT(*) AS Count, MAX(APPEARANCES) AS MaxAppearances, MIN(APPEARANCES) AS MinAppearances, ROUND(AVG(APPEARANCES)) AS AvgAppearancesS
+--FROM MarvelCharacters
+--GROUP BY SEX
+
+--SELECT name, MAX(APPEARANCES) AS MaxAppearances
+--FROM MarvelCharacters
+
+
+--SELECT COUNT(*)
+--FROM MarvelCharacters
+
+--SELECT COUNT(DISTINCT(EYE))
+--FROM MarvelCharacters
+
+--SELECT HAIR, EYE, GROUP_CONCAT(NAME) AS NAMES
+--FROM MarvelCharacters
+--GROUP BY HAIR EYE
+--HAVING COUNT(*) > 10
+
+--SELECT HAIR, EYE, GROUP_CONCAT(NAME) AS Names
+--FROM MarvelCharacters
+--WHERE YEAR BETWEEN 1960 AND 1969 AND EYE = 'Blye EYE' AND HAIR = 'Blond Hair'
+--GROUP BY HAIR, EYE
+--SELECT EYE
+--FROM MarvelCharacters
+--GROUP BY EYE;
+
+--SELECT EYE, COUNT(*) AS COUNT
+--FROM MarvelCharacters
+--GROUP BY EYE;
+
+--SELECT EYE, COUNT(*) AS COUNT
+--FROM MarvelCharacters
+--WHERE EYE IS NOT NULL
+--GROUP BY EYE
+--HAVING Count > 10 AND EYE IS NOT NULL;
+
+--SELECT EYE, COUNT(*) AS Count
+--FROM MarvelCharacters
+--WHERE EYE IS NOT NULL
+--GROUP BY EYE
+--HAVING Count > 10 
+--ORDER BY Count DESC
+--LIMIT 5;
+
+--SELECT HAIR, COUNT(*) AS Count
+--FROM MarvelCharacters
+--WHERE HAIR IS NOT NULL
+--GROUP BY HAIR
+--HAVING Count > 10 
+--ORDER BY Count DESC
+--LIMIT 5;
+
+--SELECT HAIR, EYE, COUNT(*) AS Count, ROUND(AVG(YEAR)) AS AvgYear
+--FROM MarvelCharacters
+--WHERE HAIR IS NOT NULL AND EYE IS NOT NULL
+--GROUP BY HAIR, EYE
+--HAVING Count > 10 
+--ORDER BY Count DESC
+
+--SELECT HAIR, COUNT(*) AS Count, Name AS MostPopularCharacter, APPEARANCES
+--FROM 
+--   (SELECT * FROM MarvelCharacters
+--    ORDER BY APPEARANCES DESC)
+--WHERE HAIR IS NOT NULL
+--GROUP BY HAIR
+--HAVING Count > 10 
+--ORDER BY Count DESC
+--LIMIT 5;
+
+--SELECT HAIR, EYE, COUNT(*) AS Count, Name, YEAR
+--FROM 
+--    (SELECT * FROM MarvelCharacters
+--    ORDER BY YEAR)
+--WHERE HAIR IS NOT NULL AND EYE IS NOT NULL
+--GROUP BY HAIR, EYE
+--HAVING Count > 10
+--ORDER BY YEAR
+
+
+--WITH MarvelCharactersSorted AS 
+--    (SELECT * FROM MarvelCharacters
+--    WHERE YEAR IS NOT NULL
+--    ORDER BY YEAR)
+
+--SELECT HAIR, EYE, COUNT(*) AS Count, Name, YEAR
+--FROM MarvelCharactersSorted
+--WHERE HAIR IS NOT NULL AND EYE IS NOT NULL
+--GROUP BY HAIR, EYE
+--HAVING Count > 10
+--ORDER BY HAIR, YEAR
+
+--SELECT SEX, COUNT(*) AS Count, MAX(APPEARANCES) AS MaxAppearances, MIN(APPEARANCES) AS MinAppearances, ROUND(AVG(APPEARANCES)) AS AvgAppearancesS
+--FROM MarvelCharacters
+--GROUP BY SEX
+
+--SELECT name, MAX(APPEARANCES) AS MaxAppearances
+--FROM MarvelCharacters
+
+
+--SELECT COUNT(*)
+--FROM MarvelCharacters
+
+--SELECT COUNT(DISTINCT(EYE))
+--FROM MarvelCharacters
+
+--SELECT HAIR, EYE, GROUP_CONCAT(NAME) AS NAMES
+--FROM MarvelCharacters
+--GROUP BY HAIR EYE
+--HAVING COUNT(*) > 10
+
+--SELECT HAIR, EYE, GROUP_CONCAT(NAME) AS Names
+--FROM MarvelCharacters
+--WHERE YEAR BETWEEN 1960 AND 1969 AND EYE = 'Blye EYE' AND HAIR = 'Blond Hair'
+--GROUP BY HAIR, EYE
+
+--SELECT EYE, GROUP_CONTANT(Name) AS Names
+--FROM MarvelCharacters
+--WHERE Name LIKE '%man'
+--GROUP BY EYE
+
+--SELECT EYE, GROUP_CONCAT(Name) AS Names
+--FROM MarvelCharacters
+--WHERE Name LIKE '%man%'
+--GROUP BY EYE
+
+--SELECT YEAR, COUNT(*) AS Count
+--FROM MarvelCharacters
+--GROUP BY YEAR
+--ORDER BY YEAR DESC
+
+SELECT YEAR / 10 * 10 AS Decade, COUNT(*) AS TotalChar, MAX (APPEARANCES) AS MaxAppearances, Name
+
+FROM MarvelCharacters
+GROUP BY Decade
+ORDER BY Decade DESC
